@@ -14,10 +14,10 @@ const client = new Client({
 const messageCounts = new Map();
 
 client.on('ready', () => {
-    console.log(Logged in as ${client.user.tag}!);
+    console.log(`Logged in as ${client.user.tag}!`);
     console.log(
         '\x1b[36m[ INFO ]\x1b[0m',
-        \x1b[34mPing: ${client.ws.ping} ms \x1b[0m
+        `\x1b[34mPing: ${client.ws.ping} ms \x1b[0m`
     );
     updateStatus(); // Calling updateStatus here
     setInterval(updateStatus, 10000); // Update status every 10 seconds
@@ -32,7 +32,7 @@ client.on('messageCreate', (message) => {
     userMessageData.count += 1;
 
     if (userMessageData.count >= 5) {
-        message.channel.send(TANGINA MO WAG KA MAG SPAM${message.author}!);
+        message.channel.send(`TANGINA MO WAG KA MAG SPAM ${message.author}!`);
         userMessageData.count = 0;
         clearTimeout(userMessageData.timer); // Clear previous timeout
     }
@@ -83,7 +83,7 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(
         '\x1b[36m[ SERVER ]\x1b[0m',
-        \x1b[32m SH : http://localhost:${port} ✅\x1b[0m
+        `\x1b[32m SH : http://localhost:${port} ✅\x1b[0m`
     );
 });
 
@@ -91,8 +91,9 @@ app.listen(port, () => {
 async function setActivity() {
     const time = formatTime();
     client.user.setActivity({
-        name: !dxvs [${time}],
+        name: `David [${time}]`,
         type: ActivityType.Watching,
+        url: '#',
         assets: {
             largeImage: '#',
             largeText: '#',
@@ -107,7 +108,7 @@ async function setActivity() {
 }
 
 function updateStatus() {
-    client.user.setActivity('!dxvs', {
+    client.user.setActivity('David', {
         type: ActivityType.Watching,
     });
     client.user.setPresence({ status: 'dnd' });
