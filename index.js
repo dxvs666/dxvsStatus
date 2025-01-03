@@ -32,7 +32,7 @@ client.on('messageCreate', (message) => {
     userMessageData.count += 1;
 
     if (userMessageData.count >= 5) {
-        message.channel.send(TANGINA MO WAG KA MAG SPAM ${message.author}!);
+        message.channel.send(TANGINA MO WAG KA MAG SPAM${message.author}!);
         userMessageData.count = 0;
         clearTimeout(userMessageData.timer); // Clear previous timeout
     }
@@ -45,8 +45,32 @@ client.on('messageCreate', (message) => {
 
     messageCounts.set(userId, userMessageData);
 
+    // Example button usage when a user sends a message
+    if (message.content === '!button') {
+        // Create a row of buttons
+        const row = new MessageActionRow().addComponents(
+            new MessageButton()
+                .setCustomId('primary_button')
+                .setLabel('Click Me!')
+                .setStyle('PRIMARY')
+        );
+
+        // Send a message with the button
+        message.channel.send({
+            content: 'Here is your button!',
+            components: [row],
+        });
+    }
 });
 
+// Handle button interaction
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isButton()) return;
+
+    if (interaction.customId === 'primary_button') {
+        await interaction.reply({ content: 'You clicked the button!', ephemeral: true });
+    }
+});
 
 const app = express();
 const port = 3000;
@@ -69,6 +93,15 @@ async function setActivity() {
     client.user.setActivity({
         name: David [${time}],
         type: ActivityType.Watching,
+        assets: {
+            largeImage: '#',
+            largeText: '#',
+            smallImage: '#',
+            smallText: '#',
+        },
+        buttons: [
+            { label: 'Server', url: '#' },
+        ]
     });
     client.user.setPresence({ status: 'dnd' });
 }
