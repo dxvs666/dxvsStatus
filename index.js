@@ -1,3 +1,4 @@
+
 const { Client, GatewayIntentBits, ActivityType, MessageActionRow, MessageButton } = require('discord.js');
 require('dotenv').config();
 const express = require('express');
@@ -32,7 +33,7 @@ client.on('messageCreate', (message) => {
     userMessageData.count += 1;
 
     if (userMessageData.count >= 5) {
-        message.channel.send(`TANGINA MO WAG KA MAG SPAM ${message.author}!`);
+        message.channel.send(`TANGINAMO WAG KA MAG SPAM ${message.author}!`);
         userMessageData.count = 0;
         clearTimeout(userMessageData.timer); // Clear previous timeout
     }
@@ -91,24 +92,24 @@ app.listen(port, () => {
 async function setActivity() {
     const time = formatTime();
     client.user.setActivity({
-        name: `David [${time}]`,
+        name: `!DXVS [${time}]`,
         type: ActivityType.Watching,
-        url: '#',
+        url: 'https://www.tiktok.com/@davidrz',
         assets: {
-            largeImage: '#',
-            largeText: '#',
-            smallImage: '#',
-            smallText: '#',
+            largeImage: 'https://media1.tenor.com/m/EuRL4e1BvGUAAAAC/malupiton-bossing-boss-dila.gif',
+            largeText: 'Kupal ka BOSS',
+            smallImage: 'https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/e3eea550621f1ff34d3ae1f71c9f4e8b~c5_1080x1080.jpeg',
+            smallText: '_sythoo',
         },
         buttons: [
-            { label: 'Server', url: '#' },
+            { label: 'Server', url: 'https://discord.gg/zyjnMDyy' },
         ]
     });
     client.user.setPresence({ status: 'dnd' });
 }
 
 function updateStatus() {
-    client.user.setActivity('David', {
+    client.user.setActivity('!DXVS', {
         type: ActivityType.Watching,
     });
     client.user.setPresence({ status: 'dnd' });
