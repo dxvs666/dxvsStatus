@@ -32,7 +32,7 @@ client.on('messageCreate', (message) => {
     userMessageData.count += 1;
 
     if (userMessageData.count >= 5) {
-        message.channel.send(`WAG SPAM KUPAL KABA BOSS ${message.author}?!`);
+        message.channel.send(`TANGINAMO WAG KA MAG SPAM ${message.author}!`);
         userMessageData.count = 0;
         clearTimeout(userMessageData.timer); // Clear previous timeout
     }
@@ -91,7 +91,7 @@ app.listen(port, () => {
 async function setActivity() {
     const time = formatTime();
     client.user.setActivity({
-        name: `Saito [${time}]`,
+        name: `dxvs [${time}]`,
         type: ActivityType.Watching,
         url: 'https://www.tiktok.com/@javinarjj',
         assets: {
@@ -108,7 +108,7 @@ async function setActivity() {
 }
 
 function updateStatus() {
-    client.user.setActivity('Saito', {
+    client.user.setActivity('!dxvs', {
         type: ActivityType.Watching,
     });
     client.user.setPresence({ status: 'dnd' });
