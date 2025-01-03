@@ -14,10 +14,10 @@ const client = new Client({
 const messageCounts = new Map();
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(Logged in as ${client.user.tag}!);
     console.log(
         '\x1b[36m[ INFO ]\x1b[0m',
-        `\x1b[34mPing: ${client.ws.ping} ms \x1b[0m`
+        \x1b[34mPing: ${client.ws.ping} ms \x1b[0m
     );
     updateStatus(); // Calling updateStatus here
     setInterval(updateStatus, 10000); // Update status every 10 seconds
@@ -32,7 +32,7 @@ client.on('messageCreate', (message) => {
     userMessageData.count += 1;
 
     if (userMessageData.count >= 5) {
-        message.channel.send(`TANGINAMO WAG KA MAG SPAM ${message.author}!`);
+        message.channel.send(TANGINA MO WAG KA MAG SPAM ${message.author}!);
         userMessageData.count = 0;
         clearTimeout(userMessageData.timer); // Clear previous timeout
     }
@@ -45,32 +45,8 @@ client.on('messageCreate', (message) => {
 
     messageCounts.set(userId, userMessageData);
 
-    // Example button usage when a user sends a message
-    if (message.content === '!button') {
-        // Create a row of buttons
-        const row = new MessageActionRow().addComponents(
-            new MessageButton()
-                .setCustomId('primary_button')
-                .setLabel('Click Me!')
-                .setStyle('PRIMARY')
-        );
-
-        // Send a message with the button
-        message.channel.send({
-            content: 'Here is your button!',
-            components: [row],
-        });
-    }
 });
 
-// Handle button interaction
-client.on('interactionCreate', async (interaction) => {
-    if (!interaction.isButton()) return;
-
-    if (interaction.customId === 'primary_button') {
-        await interaction.reply({ content: 'You clicked the button!', ephemeral: true });
-    }
-});
 
 const app = express();
 const port = 3000;
@@ -83,7 +59,7 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(
         '\x1b[36m[ SERVER ]\x1b[0m',
-        `\x1b[32m SH : http://localhost:${port} ✅\x1b[0m`
+        \x1b[32m SH : http://localhost:${port} ✅\x1b[0m
     );
 });
 
@@ -91,24 +67,14 @@ app.listen(port, () => {
 async function setActivity() {
     const time = formatTime();
     client.user.setActivity({
-        name: `dxvs [${time}]`,
+        name: David [${time}],
         type: ActivityType.Watching,
-        url: 'https://www.tiktok.com/@javinarjj',
-        assets: {
-            largeImage: 'https://media1.tenor.com/m/EuRL4e1BvGUAAAAC/malupiton-bossing-boss-dila.gif',
-            largeText: 'Kupal ka BOSS',
-            smallImage: 'https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/e3eea550621f1ff34d3ae1f71c9f4e8b~c5_1080x1080.jpeg',
-            smallText: '_sythoo',
-        },
-        buttons: [
-            { label: 'Server', url: 'https://discord.gg/zyjnMDyy' },
-        ]
     });
     client.user.setPresence({ status: 'dnd' });
 }
 
 function updateStatus() {
-    client.user.setActivity('!dxvs', {
+    client.user.setActivity('David', {
         type: ActivityType.Watching,
     });
     client.user.setPresence({ status: 'dnd' });
