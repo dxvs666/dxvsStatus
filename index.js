@@ -1,4 +1,3 @@
-
 const { Client, GatewayIntentBits, ActivityType, MessageActionRow, MessageButton } = require('discord.js');
 require('dotenv').config();
 const express = require('express');
@@ -33,7 +32,7 @@ client.on('messageCreate', (message) => {
     userMessageData.count += 1;
 
     if (userMessageData.count >= 5) {
-        message.channel.send(`TANGINAMO WAG KA MAG SPAM ${message.author}!`);
+        message.channel.send(`WAG SPAM KUPAL KABA BOSS ${message.author}?!`);
         userMessageData.count = 0;
         clearTimeout(userMessageData.timer); // Clear previous timeout
     }
@@ -92,9 +91,9 @@ app.listen(port, () => {
 async function setActivity() {
     const time = formatTime();
     client.user.setActivity({
-        name: `!DXVS [${time}]`,
+        name: `Saito [${time}]`,
         type: ActivityType.Watching,
-        url: 'https://www.tiktok.com/@davidrz',
+        url: 'https://www.tiktok.com/@javinarjj',
         assets: {
             largeImage: 'https://media1.tenor.com/m/EuRL4e1BvGUAAAAC/malupiton-bossing-boss-dila.gif',
             largeText: 'Kupal ka BOSS',
@@ -109,7 +108,7 @@ async function setActivity() {
 }
 
 function updateStatus() {
-    client.user.setActivity('!DXVS', {
+    client.user.setActivity('Saito', {
         type: ActivityType.Watching,
     });
     client.user.setPresence({ status: 'dnd' });
